@@ -119,24 +119,19 @@
   }
 }
 
-
-
-/*----------FONTES----------*/
-
 @font-face {
-    font-family: 'Britanica';
-    src: url('/frontend/britanica-heavy-italic.ttf');
-    font-weight: bold;
-    font-style: italic;
+  font-family: "Britanica";
+  src: url("/frontend/public/fonts/britanica-heavy-italic.ttf");
+  font-weight: bold;
+  font-style: italic;
 }
 @font-face {
-    font-family: Alexandria;
-    src: url('/frontend/fonts/Alexandria-VariableFont_wght.ttf');
-    font-weight: lighter;
-  }
+  font-family: Alexandria;
+  src: url("/frontend/public/fonts/Alexandria-VariableFont_wght.ttf");
+  font-weight: lighter;
+}
 
-
-.header{
+.header {
   position: fixed;
   top: 0;
   left: 0;
@@ -149,7 +144,12 @@
   border-bottom: 1px solid black;
 }
 
-.navbar{
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -157,39 +157,58 @@
   width: 100%;
 }
 
-.nav-icons, .nav-links{
+.nav-icons,
+.nav-links {
   flex-basis: 30%;
 }
 
-.nav-links{
+.nav-links {
   display: flex;
   gap: 70px;
   justify-content: flex-start;
-  
+  position: relative;
 }
 
-.nav-links a{
+.nav-links a {
   text-decoration: none;
   color: black;
   font-family: Alexandria, sans-serif;
+  position: relative;
 }
 
-.nav-icons{
+.nav-links a::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background: black;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-out;
+  transform-origin: bottom left;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-icons {
   display: flex;
   gap: 30px;
   justify-content: flex-end;
 }
 
-.nav-icons a{
+.nav-icons a {
   color: black;
 }
 
-.nav-icons a img{
+.nav-icons a img {
   display: block;
   width: 20px;
 }
 
-.logo{
+.logo {
   text-align: center;
   flex-basis: 40%;
   margin-top: 0;
@@ -205,7 +224,80 @@
   line-height: 1.4;
 }
 
-.logo a{
+.logo a {
   text-decoration: none;
+  color: black;
+}
+
+.hero-banner {
+  min-height: 80vh;
+  height: 100vh;
+  width: 100%;
+
+  position: relative;
+
+  /* Configuração da Imagem de Fundo (AJUSTE O CAMINHO!) */
+  background-image: url("frontend/public/images/hero-banner.png");
+  background-image: url("/frontend/public/images/hero-banner.png");
+  background-size: 120% auto;
+  background-position: center center; /* Centraliza a imagem */
+  padding-top: 60px; /* Ajuste para ser igual à altura da sua navbar */
+
+  /* Garante que o padding não aumente a altura total do elemento */
+  box-sizing: border-box;
+  font-family: Britanica, sans-serif;
+}
+
+/* Conteúdo (Texto) - Canto Inferior Esquerdo */
+.hero-content {
+  position: absolute;
+  bottom: 60px; /* Distância do fundo */
+  left: 80px; /* Distância da lateral (Mantenha o padding da navbar) */
+
+  color: white;
+  max-width: 50%; /* Evita que o texto se misture com o botão */
+}
+
+.hero-title {
+  font-size: 4em;
+  font-weight: 900;
+  line-height: 1; /* Elimina espaço vertical extra */
+  margin: 0;
+  color: white;
+}
+
+.hero-subtitle {
+  font-size: 1.5em;
+  font-weight: 300;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+/* Botão "COMPRE AGORA" - Canto Inferior Direito */
+.hero-button {
+  position: absolute;
+  bottom: 60px; /* Mesma distância do fundo do texto */
+  right: 80px; /* Mesma distância da lateral */
+
+  display: inline-block;
+  padding: 15px 25px;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  /* Estilo Contorno */
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
+
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: white;
   color: black;
 }
